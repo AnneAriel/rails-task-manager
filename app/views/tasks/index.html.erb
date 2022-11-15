@@ -2,6 +2,19 @@
 
 <ul>
   <% @tasks.each do |task| %>
-  <li><%= task.title %></li>
+  <li>
+    <% if task.completed? %>
+      <p><i class="fa-regular fa-square-check"></i> <%=link_to task["title"], task_path(task[:id]), class:"list" %></p>
+      </li>
+    <% else %>
+      <p ><i class="fa-regular fa-square"></i> <%=link_to task["title"], task_path(task[:id]), class:"list"%></p>
+      </li>
+    <% end %>
   <% end %>
 </ul>
+
+<div class = "link">
+  <p class = "m-3">
+  <%= link_to 'Add new task', new_task_path, class:"btn btn-primary" %>
+  </p>
+</div>
